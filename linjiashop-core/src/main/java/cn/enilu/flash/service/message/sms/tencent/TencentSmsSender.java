@@ -40,7 +40,7 @@ public class TencentSmsSender implements SmsSender {
                     list.add(v);
                 }
                 String[] p = list.toArray(new String[0]);
-                result = ssender.sendWithParam("86", receiver,Integer.valueOf(tplCode),p ,smsSign, "", "");
+                //result = ssender.sendWithParam("86", receiver,Integer.valueOf(tplCode),p ,smsSign, "", "");
                         //.sendWithParam("86", receiver,
                     //Integer.valueOf(tplCode), list,smsSign, "", "");
             }else {
@@ -48,8 +48,8 @@ public class TencentSmsSender implements SmsSender {
                 result = ssender.send(0, "86", receiver,
                         content, "", "");
             }
-            logger.info("腾讯短信发送结果:{}",result.errMsg);
-            return result.result == 0;
+            //logger.info("腾讯短信发送结果:{}",result.errMsg);
+            //return result.result == 0;
         } catch (Exception e) {
             logger.error("发送短信异常",e);
         }
