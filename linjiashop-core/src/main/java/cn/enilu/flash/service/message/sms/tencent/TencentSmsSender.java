@@ -21,7 +21,7 @@ public class TencentSmsSender implements SmsSender {
     @Autowired
     private CfgService cfgService;
     @Override
-    public boolean sendSms(String tplCode, String receiver, LinkedHashMap params, String content) {
+    public boolean sendSms(String tplCode, String receiver, LinkedHashMap<String,String> params, String content) {
         Integer appid = Integer.valueOf( cfgService.getCfgValue(CfgKey.API_TENCENT_SMS_APPID));
         String appkey = cfgService.getCfgValue(CfgKey.API_TENCENT_SMS_APPKEY);
         String smsSign = cfgService.getCfgValue(CfgKey.API_TENCENT_SMS_SIGN);
@@ -33,8 +33,13 @@ public class TencentSmsSender implements SmsSender {
                 logger.info("腾讯短信param:{}",params);
                 logger.info("腾讯短信param---:{},{},{}",tplCode,receiver,content);
                 logger.info("腾讯短信param.values:{}",params.values());
-                ArrayList<String> list =  (ArrayList) Lists.newArrayList(params.values());
-                String[] p = (String[])params.values().toArray();
+                ArrayList<String> list =  new ArrayList<>();//(ArrayList) Lists.newArrayList(params.values());
+
+                for(String key : params.keySet()){
+                    String v = params.get(key);
+                    list.add(v);
+                }
+                String[] p = list.toArray(new String[0]);
                 result = ssender.sendWithParam("86", receiver,Integer.valueOf(tplCode),p ,smsSign, "", "");
                         //.sendWithParam("86", receiver,
                     //Integer.valueOf(tplCode), list,smsSign, "", "");

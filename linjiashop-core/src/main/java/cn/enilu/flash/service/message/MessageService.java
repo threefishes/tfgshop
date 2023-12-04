@@ -48,14 +48,14 @@ public class MessageService extends BaseService<Message,Long,MessageRepository> 
         return true;
     }
 
-    public void sendTplEmail(String tplCode, String from, String to, String cc, String title, Map<String, Object> dataMap) {
+    public void sendTplEmail(String tplCode, String from, String to, String cc, String title, Map<String, String> dataMap) {
         MessageTemplate messageTemplate = messagetemplateRepository.findByCode(tplCode);
         String content = getContent(messageTemplate.getContent(), dataMap);
         sendEmailMessage(tplCode,from,to,cc,title,content,messageTemplate,null,null);
     }
     public void sendTplEmail(String tplCode, String from, String to, String cc, String title,
                              String attachmentFilename, InputStreamSource inputStreamSource,
-                             Map<String, Object> dataMap) {
+                             Map<String, String> dataMap) {
         MessageTemplate messageTemplate = messagetemplateRepository.findByCode(tplCode);
         String content = getContent(messageTemplate.getContent(), dataMap);
         sendEmailMessage(tplCode,from,to,cc,title,content,messageTemplate,attachmentFilename,inputStreamSource);
@@ -68,7 +68,7 @@ public class MessageService extends BaseService<Message,Long,MessageRepository> 
     }
 
     public void sendSms(String tplCode, String receiver, String... args) {
-        LinkedHashMap params = new LinkedHashMap();
+        LinkedHashMap<String,String> params = new LinkedHashMap<>();
         for (int i = 0; i < args.length; i++) {
             params.put((i + 1) + "", args[i]);
         }
@@ -76,7 +76,7 @@ public class MessageService extends BaseService<Message,Long,MessageRepository> 
     }
 
 
-    public void sendSms(String tplCode, String receiver, LinkedHashMap params) {
+    public void sendSms(String tplCode, String receiver, LinkedHashMap<String,String> params) {
         MessageTemplate messageTemplate = messagetemplateRepository.findByCode(tplCode);
         String content = getContent(messageTemplate.getContent(), params);
         boolean isSuccess = false;
@@ -115,7 +115,7 @@ public class MessageService extends BaseService<Message,Long,MessageRepository> 
         return content;
     }
 
-    private String getContent(String template, Map<String, Object> dataMap) {
+    private String getContent(String template, Map<String, String> dataMap) {
         return StrSubstitutor.replace(template, dataMap);
     }
 

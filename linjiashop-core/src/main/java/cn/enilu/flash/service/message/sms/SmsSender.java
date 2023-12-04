@@ -12,5 +12,5 @@ public interface SmsSender {
      * @param content
      * @return
      */
-    boolean sendSms(String tplCode, String receiver, LinkedHashMap params, String content);
+    boolean sendSms(String tplCode, String receiver, LinkedHashMap<String,String> params, String content);
 }
