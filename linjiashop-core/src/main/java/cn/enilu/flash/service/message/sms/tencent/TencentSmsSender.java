@@ -31,6 +31,7 @@ public class TencentSmsSender implements SmsSender {
             if(StringUtil.isNotEmpty(tplCode)){
                 //ArrayList list = (ArrayList) Lists.newArrayList(params.values());
                 logger.info("腾讯短信param:{}",params);
+                logger.info("腾讯短信param.values:{}",params.values());
                 ArrayList<String> list =  (ArrayList) Lists.newArrayList(params.values());
                 result = ssender.sendWithParam("86", receiver,
                     Integer.valueOf(tplCode), list,smsSign, "", "");
