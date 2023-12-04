@@ -31,20 +31,22 @@ public class TencentSmsSender implements SmsSender {
             if(StringUtil.isNotEmpty(tplCode)){
                 //ArrayList list = (ArrayList) Lists.newArrayList(params.values());
                 logger.info("腾讯短信param:{}",params);
+                logger.info("腾讯短信param:{},{},{}",tplCode,receiver,content);
                 logger.info("腾讯短信param.values:{}",params.values());
                 ArrayList<String> list =  (ArrayList) Lists.newArrayList(params.values());
-                result = ssender.sendWithParam("86", receiver,
-                    Integer.valueOf(tplCode), list,smsSign, "", "");
+                String[] p = (String[])params.values().toArray();
+                result = ssender.sendWithParam("86", receiver,Integer.valueOf(tplCode), ,smsSign, "", "");
+                        //.sendWithParam("86", receiver,
+                    //Integer.valueOf(tplCode), list,smsSign, "", "");
             }else {
                 //发送固定内容短信
                 result = ssender.send(0, "86", receiver,
                         content, "", "");
-
             }
             logger.info("腾讯短信发送结果:{}",result.errMsg);
             return result.result == 0;
         } catch (Exception e) {
-                logger.error("发送短信异常",e);
+            logger.error("发送短信异常",e);
         }
 
         return false;
