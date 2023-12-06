@@ -60,6 +60,9 @@ export default {
     handleClose() {
 
     },
+    remove(id){
+      goodsApi.remove(id);
+    },
     fetchNext() {
       this.listQuery.page = this.listQuery.page + 1
       this.fetchData()

@@ -178,6 +178,7 @@ public abstract class BaseService<T, ID extends Serializable, R extends BaseRepo
         return dao.save(record);
     }
 
+
     @Override
     public void update(Iterable<T> list) {
         dao.saveAll(list);

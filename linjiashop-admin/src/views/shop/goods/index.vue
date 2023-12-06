@@ -75,6 +75,8 @@
         <template slot-scope="scope">
           <el-button type="primary" size="mini" icon="el-icon-edit" @click.native="edit(scope.row.id)" circle>
           </el-button>
+          <el-button type="error" size="mini" icon="el-icon-del" @click.native="remove(scope.row.id)" circle>
+          </el-button>
         </template>
       </el-table-column>
 
