@@ -1,6 +1,6 @@
 package cn.enilu.flash.bean.entity;
 
-import cn.enilu.flash.core.aop.Where;
+import org.hibernate.annotations.Where;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
