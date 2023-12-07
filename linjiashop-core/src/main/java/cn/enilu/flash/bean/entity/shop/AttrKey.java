@@ -4,6 +4,7 @@ import cn.enilu.flash.bean.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ import java.util.List;
 @Table(appliesTo = "t_shop_attr_key",comment = "商品属性名")
 @Entity(name="t_shop_attr_key")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class AttrKey extends BaseEntity {
     @Column(name="attr_name",columnDefinition = "VARCHAR(32) COMMENT '属性名'")
     private String attrName;

@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.system;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import javax.validation.constraints.NotBlank;
 @Table(appliesTo = "t_sys_cfg",comment = "系统参数")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Cfg  extends BaseEntity {
     @NotBlank(message = "参数名不能为空")
     @Column(name = "cfg_name",columnDefinition = "VARCHAR(256) COMMENT '参数名'")

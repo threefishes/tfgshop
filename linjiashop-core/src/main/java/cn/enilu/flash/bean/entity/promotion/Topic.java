@@ -6,6 +6,7 @@ import cn.enilu.flash.bean.entity.shop.Goods;
 import cn.enilu.flash.utils.Lists;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @Entity(name="t_promotion_topic")
 @Table(appliesTo = "t_promotion_topic",comment = "专题")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Topic  extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(64) COMMENT '标题'")
     private String title;

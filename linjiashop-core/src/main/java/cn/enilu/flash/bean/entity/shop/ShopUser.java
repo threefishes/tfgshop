@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.shop;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import java.util.Date;
 @Table(appliesTo = "t_shop_user",comment = "用户")
 @Entity(name="t_shop_user")
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+@Where(clause = "is_delete=0")
 public class ShopUser  implements Serializable {
 
     @Id

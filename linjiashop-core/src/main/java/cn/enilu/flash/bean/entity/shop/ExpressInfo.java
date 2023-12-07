@@ -6,6 +6,7 @@ import cn.enilu.flash.utils.Lists;
 import cn.enilu.flash.utils.StringUtil;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import java.util.Map;
 @Data
 @Table(appliesTo = "t_shop_express_info",comment = "快递信息")
 @Entity(name="t_shop_express_info")
+@Where(clause = "is_delete=0")
 public class ExpressInfo extends BaseEntity {
     /**
      * 在途中

@@ -2,6 +2,7 @@ package cn.enilu.flash.bean.entity.system;
 
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Date;
 @Entity(name = "t_sys_operation_log")
 @Table(appliesTo = "t_sys_operation_log",comment = "操作日志")
 @Data
+@Where(clause = "is_delete=0")
 public class OperationLog {
 
     @Id

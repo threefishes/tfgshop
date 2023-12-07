@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.shop;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 @Table(appliesTo = "t_shop_goods_sku",comment = "商品SKU")
 @Entity(name="t_shop_goods_sku")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class GoodsSku extends BaseEntity {
     @Column(name="code",columnDefinition = "VARCHAR(32) COMMENT 'sku编码,格式:逗号分割的属性值id'")
     private String code;

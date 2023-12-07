@@ -1,9 +1,9 @@
 package cn.enilu.flash.bean.entity.system;
 
 import cn.enilu.flash.bean.entity.BaseEntity;
-import cn.enilu.flash.core.aop.Where;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

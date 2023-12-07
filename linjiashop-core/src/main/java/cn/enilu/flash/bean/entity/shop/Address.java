@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.shop;
 import cn.enilu.flash.bean.entity.ShopBaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
 @Data
 @Table(appliesTo = "t_shop_address",comment = "收货地址")
 @Entity(name="t_shop_address")
+@Where(clause = "is_delete=0")
 public class Address extends ShopBaseEntity {
     @Column(columnDefinition = "BIGINT COMMENT '用户id'")
     private Long idUser;

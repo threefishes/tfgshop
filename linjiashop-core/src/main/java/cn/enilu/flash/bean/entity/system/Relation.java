@@ -2,6 +2,7 @@ package cn.enilu.flash.bean.entity.system;
 
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 @Entity(name = "t_sys_relation")
 @Table(appliesTo = "t_sys_relation",comment = "菜单角色关系")
 @Data
+@Where(clause = "is_delete=0")
 public class Relation {
     @Id
     @GeneratedValue

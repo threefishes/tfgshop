@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.cms;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Table(appliesTo = "t_cms_banner",comment = "广告banner")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Banner extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(128) COMMENT '点击banner跳转到url'")
     private String url;

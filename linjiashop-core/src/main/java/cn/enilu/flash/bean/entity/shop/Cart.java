@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.shop;
 import cn.enilu.flash.bean.entity.ShopBaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @Data
 @Table(appliesTo = "t_shop_cart",comment = "购物车")
 @Entity(name="t_shop_cart")
+@Where(clause = "is_delete=0")
 public class Cart extends ShopBaseEntity {
     @Column(name="id_user",columnDefinition = "BIGINT COMMENT '用户id'")
     private Long idUser;

@@ -4,6 +4,7 @@ package cn.enilu.flash.bean.entity.system;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Table(appliesTo = "t_sys_task",comment = "定时任务")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Task extends BaseEntity {
 
     @Column(columnDefinition = "VARCHAR(50) COMMENT '任务名'")

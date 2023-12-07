@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.system;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Date;
 @Entity(name="t_sys_login_log")
 @Table(appliesTo = "t_sys_login_log",comment = "登录日志")
 @Data
+@Where(clause = "is_delete=0")
 public class LoginLog {
     @Id
     @GeneratedValue

@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.system;
 
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import java.util.Date;
 @Table(appliesTo="t_sys_task_log",comment = "定时任务日志")
 @Entity(name="t_sys_task_log")
 @Data
+@Where(clause = "is_delete=0")
 public class TaskLog{
     public static final int EXE_FAILURE_RESULT = 0;
     public static final int EXE_SUCCESS_RESULT = 1;

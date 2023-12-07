@@ -6,6 +6,7 @@ import cn.enilu.flash.bean.enumeration.shop.OrderEnum;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ import java.util.List;
 @Data
 @Table(appliesTo = "t_shop_order",comment = "订单")
 @Entity(name="t_shop_order")
+@Where(clause = "is_delete=0")
 public class Order extends ShopBaseEntity {
     @Column(name="id_user",columnDefinition = "BIGINT COMMENT '用户id'")
     private Long idUser;

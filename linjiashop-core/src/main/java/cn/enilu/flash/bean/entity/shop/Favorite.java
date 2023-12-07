@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.shop;
 import cn.enilu.flash.bean.entity.ShopBaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity(name="t_shop_favorite")
 @Table(appliesTo = "t_shop_favorite",comment = "用户收藏")
+@Where(clause = "is_delete=0")
 public class Favorite extends ShopBaseEntity {
     @Column(name="id_user",columnDefinition = "BIGINT COMMENT '用户id'")
     private Long idUser;

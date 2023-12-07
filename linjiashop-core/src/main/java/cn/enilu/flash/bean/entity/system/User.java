@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.system;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import java.util.Date;
 @Table(appliesTo = "t_sys_user",comment = "账号")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class User  extends BaseEntity {
     @Column
     private String avatar;

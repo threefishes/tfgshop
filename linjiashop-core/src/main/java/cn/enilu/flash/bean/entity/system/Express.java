@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.system;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.EntityListeners;
 @Table(appliesTo = "t_sys_express",comment = "物流公司")
 @Entity(name="t_sys_express")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Express extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(32) COMMENT '公司名称'")
     private String name;

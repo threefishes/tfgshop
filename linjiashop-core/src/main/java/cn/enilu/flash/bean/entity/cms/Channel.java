@@ -3,6 +3,7 @@ package cn.enilu.flash.bean.entity.cms;
 import cn.enilu.flash.bean.entity.BaseEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Table(appliesTo = "t_cms_channel",comment = "文章栏目")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Channel extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(64) COMMENT '名称'")
     @NotBlank(message = "名称不能为空")

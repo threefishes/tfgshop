@@ -4,6 +4,7 @@ import cn.enilu.flash.bean.entity.BaseEntity;
 import cn.enilu.flash.bean.entity.cms.Banner;
 import lombok.Data;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import java.util.List;
 @Table(appliesTo = "t_shop_category",comment = "商品类别")
 @Entity(name="t_shop_category")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Category extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(16) COMMENT '名称'")
     private String name;

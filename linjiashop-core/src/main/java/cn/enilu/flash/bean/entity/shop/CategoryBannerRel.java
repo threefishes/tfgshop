@@ -5,6 +5,7 @@ import cn.enilu.flash.bean.entity.cms.Banner;
 import lombok.Data;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import javax.persistence.*;
 @Entity(name="t_shop_category_banner_rel")
 @Table(appliesTo = "t_shop_category_banner_rel",comment = "类别banner关联表")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class CategoryBannerRel extends BaseEntity {
     @Column(name = "id_category",columnDefinition = "BIGINT COMMENT '类别id'")
     private Long idCategory;
