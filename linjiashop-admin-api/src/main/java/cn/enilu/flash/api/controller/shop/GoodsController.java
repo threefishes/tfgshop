@@ -35,7 +35,7 @@ public class GoodsController {
 	@RequestMapping(value = "/list",method = RequestMethod.GET)
 	public Object list(@RequestParam(value = "name",required = false) String name) {
 		Page<Goods> page = new PageFactory<Goods>().defaultPage();
-		page.addFilter("name", SearchFilter.Operator.LIKE,name);
+		if(name != null)page.addFilter("name", SearchFilter.Operator.LIKE,name);
 		page = goodsService.queryPage(page);
 		return Rets.success(page);
 	}

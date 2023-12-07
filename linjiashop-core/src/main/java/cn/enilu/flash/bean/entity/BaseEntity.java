@@ -43,6 +43,6 @@ public abstract class BaseEntity implements Serializable {
     @LastModifiedBy
     @Column(name = "modify_by",columnDefinition="bigint COMMENT '最后更新人'")
     private Long modifyBy;
-    @Column(columnDefinition = "tinyint COMMENT '是否删除'")
+    @Column(name = "is_delete",columnDefinition = "tinyint COMMENT '是否删除'")
     private Boolean isDelete= false;
 }
