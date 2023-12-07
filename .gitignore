@@ -1,0 +1,8 @@
+##ignore this files##
+.idea
+linjiashop-admin/dist
+linjiashop-admin/node_modules
+linjiashop-mobile/dist
+linjiashop-mobile/node_modules
+linjiashop-admin-api/target
+linjiashop-mobile-api/target

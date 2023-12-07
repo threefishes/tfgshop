@@ -31,8 +31,7 @@ public class Category extends BaseEntity {
     private Long pid;
     @Column(columnDefinition = "VARCHAR(64) COMMENT '备注'")
     private String descript;
-    @Column(columnDefinition = "TINYINT COMMENT '是否删除'")
-    private Boolean isDelete= false;
+
     /**
      * 改字段只对一级菜单生效，也即：只有一级菜单可以显示在首页
      */

@@ -61,7 +61,12 @@ export default {
 
     },
     remove(id){
-      goodsApi.remove(id);
+      goodsApi.remove(id).then( response => {
+        this.$message({
+          message: '已删除',
+          type: 'success'
+        });
+      });
     },
     fetchNext() {
       this.listQuery.page = this.listQuery.page + 1

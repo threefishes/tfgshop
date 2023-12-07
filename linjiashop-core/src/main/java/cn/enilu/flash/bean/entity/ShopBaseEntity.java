@@ -1,5 +1,6 @@
 package cn.enilu.flash.bean.entity;
 
+import cn.enilu.flash.core.aop.Where;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,6 +22,7 @@ import java.util.Date;
 @MappedSuperclass
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+@Where(clause = "is_delete=0")
 public abstract class ShopBaseEntity implements Serializable {
 
     @Id
@@ -32,5 +34,8 @@ public abstract class ShopBaseEntity implements Serializable {
     @UpdateTimestamp
     @Column(name = "modify_time",columnDefinition="DATETIME COMMENT '最后更新时间'")
     private Date modifyTime;
+
+    @Column(columnDefinition = "tinyint COMMENT '是否删除'")
+    private Boolean isDelete= false;
 
 }
