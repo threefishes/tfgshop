@@ -1,6 +1,7 @@
 package cn.enilu.flash.bean.entity.shop;
 
 import cn.enilu.flash.bean.entity.BaseEntity;
+import cn.enilu.flash.core.aop.Where;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 @Table(appliesTo = "t_shop_goods",comment = "商品")
 @Entity(name="t_shop_goods")
 @EntityListeners(AuditingEntityListener.class)
+@Where(clause = "is_delete=0")
 public class Goods extends BaseEntity {
     @NotBlank(message = "商品名称不能为空")
     @Column(columnDefinition = "VARCHAR(32) COMMENT '名称'")

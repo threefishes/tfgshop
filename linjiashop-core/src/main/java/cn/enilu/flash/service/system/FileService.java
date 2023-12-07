@@ -189,6 +189,7 @@ public class FileService extends BaseService<FileInfo,Long,FileInfoRepository> {
     }
 
     public FileInfo getByName(String fileName) {
+        if(fileName == null) return null;
         FileInfo fileInfo =  get(SearchFilter.build("realFileName",fileName));
         fileInfo.setAblatePath(cfgService.getCfgValue(CfgKey.SYSTEM_FILE_UPLOAD_PATH) + File.separator+fileInfo.getRealFileName());
         return fileInfo;

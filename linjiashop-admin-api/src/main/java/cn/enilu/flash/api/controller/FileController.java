@@ -140,6 +140,8 @@ public class FileController extends BaseController {
     @RequestMapping(value="getImgStream",method = RequestMethod.GET)
     public void getImgStream(HttpServletResponse response,
                              @RequestParam("idFile")String  fileName){
+        if(fileName == null) return;
+
         FileInfo fileInfo = fileService.getByName(fileName);
         FileInputStream fis = null;
         response.setContentType("image/"+fileInfo.getRealFileName().split("\\.")[1]);
